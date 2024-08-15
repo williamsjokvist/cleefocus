@@ -1,113 +1,185 @@
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { Carousel } from "~/components/ui/carousel";
+import InstagramIcon from "~icons/mdi/instagram";
+import { StickyScroll } from "../components/ui/sticky-scroll";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main>
+      <Intro />
+      <Features />
+      <Partners />
+      <InstagramGallery />
+      {/* <section className="bg-white w-screen h-screen relative text-black">
+        <h2 className="font-bold text-6xl">Vad vi gör</h2>
+        <img
+          src="https://cleefocus.com/wp-content/uploads/2023/08/IMG_7528-2-768x512.jpg"
+          className="w-auto h-[500px] rounded-xl"
+        />
+      </section>
+      <section>
+        <h2 className="font-bold text-orange-400 text-6xl">Tjänster</h2>
+      </section> */}
+    </main>
+  );
+}
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+function Intro() {
+  return (
+    <section className='w-screen h-screen flex items-center relative overflow-y-hidden before:content-[""] before:absolute before:bottom-0 before:w-full before:top-0 before:bg-black  before:from-black before:opacity-50'>
+      <video
+        className="absolute top-0 -z-50 object-cover max-h-none min-w-full h-auto min-h-full"
+        src="https://cleefocus.com/wp-content/uploads/2023/09/Cleefocus-film.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+      <div className="relative inset-0 flex flex-col justify-end items-center">
+        <motion.div
+          animate={{
+            opacity: [0, 1],
+            y: [50, 0],
+          }}
+          transition={{
+            ease: "easeInOut",
+            duration: 1.25,
+          }}
+          className="opacity-0 mx-auto w-full px-[clamp(12px,3vw,24px)] lg:px-[clamp(32px,4vw,40px)] mb-0 flex flex-col gap-10"
+        >
+          <h2 className="font-bold  text-white leading-[1] text-[clamp(48px,4vw,82px)]">
+            Solcellsrengöring och underhåll i Jönköping
+          </h2>
+          <p className="text-white leading-[1.5] text-[clamp(18px,4vw,24px)]">
+            Maximera effektiviteten och utöka livslängden av din
+            solcellsanläggning med våra professionella rengöringstjänster
+          </p>
+          <div className="text-[clamp(18px,4vw,24px)] flex flex-wrap gap-10">
+            <button
+              type="button"
+              className="shadow-[0_4px_14px_0_rgb(0,0,0,10%)] hover:shadow-[0_6px_20px_rgba(93,93,93,23%)] px-8 py-2 bg-[#fff] hover:bg-blue-400 hover:text-white text-[#696969] rounded-3xl font-light transition duration-200 ease-linear"
+            >
+              Kontakt
+            </button>
+            <button
+              type="button"
+              className="shadow-[0_4px_14px_0_rgb(0,0,0,10%)] hover:shadow-[0_6px_20px_rgba(93,93,93,23%)] px-8 py-2 bg-[#fff] hover:bg-green-400 hover:text-white text-[#696969] rounded-3xl font-light transition duration-200 ease-linear"
+            >
+              Ring
+            </button>
+            <Link
+              href="https://www.instagram.com/cleefocus/"
+              target="_blank"
+              className="text-white flex items-center gap-3"
+            >
+              <InstagramIcon width={45} height={45} /> Följ oss på Instagram
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Partners() {
+  return (
+    <section>
+      <h2 className="bg-[#141414] text-white w-full py-12 text-center text-[clamp(38px,4vw,64px)] px-4">
+        Vi sammarbetar med
+      </h2>
+      <div className="flex items-center justify-center gap-20 flex-wrap py-12">
+        <img
+          width={200}
+          height={50}
+          src="https://cleefocus.com/wp-content/uploads/2023/10/Logo-Smalands-Reklambyra-e1696274659351.png"
+          className="pointer-events-none select-none"
+        />
+        <img
+          width={200}
+          height={50}
+          src="https://cleefocus.com/wp-content/uploads/2023/08/MekMaskin-logo-vit-text.png"
+          style={{ filter: "invert(1) grayscale(1)" }}
+          className="pointer-events-none select-none"
+        />
+        <img
+          width={200}
+          height={50}
+          src="https://cleefocus.com/wp-content/uploads/2023/08/kaercher-logo-white-case-study-overlay.webp"
+          style={{ filter: "invert(1)" }}
+          className="pointer-events-none select-none"
+        />
+        <img
+          width={200}
+          height={50}
+          src="https://cleefocus.com/wp-content/uploads/2023/08/logo.svg"
+          className="pointer-events-none select-none"
         />
       </div>
+    </section>
+  );
+}
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+function InstagramGallery() {
+  const images = [
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/455133922_17899168722024060_8839432986105902310_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/454762286_17898929322024060_9149285269556426652_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/455127181_17898928254024060_80517522873973738_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/455008987_17898758820024060_8513801479627212184_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/453884147_17897889351024060_56629886484733445_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/453730774_17897730876024060_1602622808588332470_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/453406819_17897310750024060_5817124933973139293_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/452634944_17896589940024060_7603900188691136917_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/451866785_17896066923024060_2940186720769365153_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/451338101_17895606690024060_9136278885865093279_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/451450247_17895606390024060_8534976270100613003_nfull.jpg",
+    "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/450586784_17895179637024060_2053923880400701924_nfull.jpg",
+  ];
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+  return <Carousel images={images} />;
+}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+const content = [
+  {
+    title: "Taktvätt",
+    description:
+      "Vi erbjuder specialiserade taktvätt som är skräddarsydda för dina behov.",
+    content: (
+      <img
+        src="https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0016-768x576.jpg"
+        className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white"
+      />
+    ),
+  },
+  {
+    title: "Takmålning",
+    description:
+      "Efter att du har fått ett rent tak kan vi även måla om ditt tak. Vårt team av erfarna tekniker har många år erfarenhet imon branchen och är redo för alla typer av utmaningar.",
+    content: (
+      <img
+        src="https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0014-768x576.jpg"
+        className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white"
+      />
+    ),
+  },
+  {
+    title: "Marktvätt",
+    description:
+      "Vi erbjuder specialiserad marktvätt som är skräddarsydd efter dina behov.",
+    content: (
+      <img
+        src="https://cleefocus.com/wp-content/uploads/2023/10/IMG-20231011-WA0001-768x768.jpg"
+        className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white"
+      />
+    ),
+  },
+];
+export function Features() {
+  return (
+    <div>
+      <StickyScroll content={content} />
+    </div>
   );
 }
