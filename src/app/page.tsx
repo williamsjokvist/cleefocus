@@ -1,16 +1,20 @@
 "use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import React from 'react'
+import { motion, useScroll, useAnimate, stagger } from "framer-motion";
 import Link from "next/link";
 import { Carousel } from "~/components/ui/carousel";
 import InstagramIcon from "~icons/mdi/instagram";
 import { StickyScroll } from "../components/ui/sticky-scroll";
+import { ContactForm } from "~/components/contact";
+import { Button } from "~/components/ui/button";
+import { useScrollTo } from '~/hooks/scroll-to';
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Intro />
       <Features />
+      <ContactForm />
       <Partners />
       <InstagramGallery />
       {/* <section className="bg-white w-screen h-screen relative text-black">
@@ -28,6 +32,10 @@ export default function Home() {
 }
 
 function Intro() {
+  "use client"
+
+  const scrollTo = useScrollTo({ ease: 'easeInOut', duration: 1.25 });
+
   return (
     <section className='w-screen h-screen flex items-center relative overflow-y-hidden before:content-[""] before:absolute before:bottom-0 before:w-full before:top-0 before:bg-black  before:from-black before:opacity-50'>
       <video
@@ -46,7 +54,7 @@ function Intro() {
           }}
           transition={{
             ease: "easeInOut",
-            duration: 1.25,
+            duration: 1.325,
           }}
           className="opacity-0 mx-auto w-full px-[clamp(12px,3vw,24px)] lg:px-[clamp(32px,4vw,40px)] mb-0 flex flex-col gap-10"
         >
@@ -58,24 +66,13 @@ function Intro() {
             solcellsanläggning med våra professionella rengöringstjänster
           </p>
           <div className="text-[clamp(18px,4vw,24px)] flex flex-wrap gap-10">
-            <button
-              type="button"
-              className="shadow-[0_4px_14px_0_rgb(0,0,0,10%)] hover:shadow-[0_6px_20px_rgba(93,93,93,23%)] px-8 py-2 bg-[#fff] hover:bg-blue-400 hover:text-white text-[#696969] rounded-3xl font-light transition duration-200 ease-linear"
-            >
-              Kontakt
-            </button>
-            <button
-              type="button"
-              className="shadow-[0_4px_14px_0_rgb(0,0,0,10%)] hover:shadow-[0_6px_20px_rgba(93,93,93,23%)] px-8 py-2 bg-[#fff] hover:bg-green-400 hover:text-white text-[#696969] rounded-3xl font-light transition duration-200 ease-linear"
-            >
-              Ring
-            </button>
+            <Button onClick={() => scrollTo(document.querySelector('#contact-form'), -200)}>Kontakta oss</Button>
             <Link
               href="https://www.instagram.com/cleefocus/"
               target="_blank"
               className="text-white flex items-center gap-3"
             >
-              <InstagramIcon width={45} height={45} /> Följ oss på Instagram
+              <InstagramIcon width={45} height={45} className='bg-gradient-insta rounded-xl p-[2px]' /> Följ oss på Instagram
             </Link>
           </div>
         </motion.div>
@@ -84,39 +81,49 @@ function Intro() {
   );
 }
 
+const partners = [
+  'https://cleefocus.com/wp-content/uploads/2023/10/Logo-Smalands-Reklambyra-e1696274659351.png',
+  'https://cleefocus.com/wp-content/uploads/2023/08/MekMaskin-logo-vit-text.png',
+  'https://cleefocus.com/wp-content/uploads/2023/08/kaercher-logo-white-case-study-overlay.webp',
+  'https://cleefocus.com/wp-content/uploads/2023/08/logo.svg'
+]
+
 function Partners() {
+  "use client"
+
   return (
     <section>
-      <h2 className="bg-[#141414] text-white w-full py-12 text-center text-[clamp(38px,4vw,64px)] px-4">
-        Vi sammarbetar med
-      </h2>
+      <motion.h2
+        initial={{ y: 25, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 }}
+        viewport={{ once: true, amount: 0.75 }}
+        className="text-black w-full py-12 text-center text-[clamp(38px,4vw,64px)] px-4"
+      >
+        Våra samarbetspartners
+      </motion.h2>
       <div className="flex items-center justify-center gap-20 flex-wrap py-12">
-        <img
-          width={200}
-          height={50}
-          src="https://cleefocus.com/wp-content/uploads/2023/10/Logo-Smalands-Reklambyra-e1696274659351.png"
-          className="pointer-events-none select-none"
-        />
-        <img
-          width={200}
-          height={50}
-          src="https://cleefocus.com/wp-content/uploads/2023/08/MekMaskin-logo-vit-text.png"
-          style={{ filter: "invert(1) grayscale(1)" }}
-          className="pointer-events-none select-none"
-        />
-        <img
-          width={200}
-          height={50}
-          src="https://cleefocus.com/wp-content/uploads/2023/08/kaercher-logo-white-case-study-overlay.webp"
-          style={{ filter: "invert(1)" }}
-          className="pointer-events-none select-none"
-        />
-        <img
-          width={200}
-          height={50}
-          src="https://cleefocus.com/wp-content/uploads/2023/08/logo.svg"
-          className="pointer-events-none select-none"
-        />
+        {partners.map((p, i) => (
+          <motion.img
+            key={p}
+            initial={{ y: 35, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ ease: 'easeOut', duration: .75, delay: 0.25 + i / 2 }}
+            viewport={{ once: true, amount: 1 }}
+            width={200}
+            height={50}
+            src={p}
+            className="pointer-events-none select-none"
+            style={{
+              ...i === 3 && {
+                filter: "invert(1) grayscale(1) contrast(2)"
+              },
+              ...(i === 2 || i === 1) && {
+                filter: "invert(1) grayscale(1)"
+              }
+            }}
+          />
+        ))}
       </div>
     </section>
   );
@@ -141,45 +148,52 @@ function InstagramGallery() {
   return <Carousel images={images} />;
 }
 
-const content = [
+const features = [
   {
     title: "Taktvätt",
     description:
-      "Vi erbjuder specialiserade taktvätt som är skräddarsydda för dina behov.",
-    content: (
-      <img
-        src="https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0016-768x576.jpg"
-        className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white"
-      />
-    ),
+      "Vi erbjuder specialiserad taktvätt, skryddarsedd till dina behov",
+    img: 'https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0016-768x576.jpg'
   },
   {
     title: "Takmålning",
     description:
-      "Efter att du har fått ett rent tak kan vi även måla om ditt tak. Vårt team av erfarna tekniker har många år erfarenhet imon branchen och är redo för alla typer av utmaningar.",
-    content: (
-      <img
-        src="https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0014-768x576.jpg"
-        className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white"
-      />
-    ),
+      `Efter att du har fått ett rent tak kan vi även måla om ditt tak,
+      vi är redo för alla typer av utmaningar`,
+    img: 'https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0014-768x576.jpg',
   },
   {
     title: "Marktvätt",
     description:
-      "Vi erbjuder specialiserad marktvätt som är skräddarsydd efter dina behov.",
-    content: (
-      <img
-        src="https://cleefocus.com/wp-content/uploads/2023/10/IMG-20231011-WA0001-768x768.jpg"
-        className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white"
-      />
-    ),
+      "Vi erbjuder specialiserad marktvätt som är skräddarsydd efter dina behov",
+    img: 'https://cleefocus.com/wp-content/uploads/2023/10/IMG-20231011-WA0001-768x768.jpg',
+
   },
 ];
 export function Features() {
   return (
-    <div>
-      <StickyScroll content={content} />
+    <div className='flex justify-around px-12 gap-8 flex-wrap'>
+      {features.map(({ title, description, img }, i) => {
+        return (
+          <motion.div
+            key={title}
+            initial={{ y: 25, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 + i / 2 }}
+            viewport={{ once: true, amount: 0.25 }}
+            className="w-[600px] grid place-content-between"
+          >
+            <h3 className='text-[clamp(38px,4vw,64px)] font-medium py-12'>{title}</h3>
+            <p className='text-xl pb-12'>{description}</p>
+            <img
+              src={img}
+              width={600}
+              height={400}
+              className='object-cover object-left-top w-full max-h-[450px] rounded-2xl w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
+            />
+          </motion.div>
+        )
+      })}
     </div>
   );
 }

@@ -27,10 +27,10 @@ export function Carousel(props: { images: string[] }) {
   }, [xTranslation, duration, width]);
 
   return (
-    <div className="h-[420px] bg-sgray pt-3">
+    <div className="relative h-[420px] bg-sgray pt-3 overflow-x-hidden">
       <motion.div
-        className="absolute left-0 flex gap-4"
-        style={{ x: xTranslation, width: 'max-content' }}
+        className="absolute left-0 flex gap-4 w-max"
+        style={{ x: xTranslation }}
         ref={ref}
       >
         {[...images, ...images].map((item, idx) => (

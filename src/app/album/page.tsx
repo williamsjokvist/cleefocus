@@ -1,8 +1,9 @@
 "use client";
-import { Gallery } from "~/components/ui/gallery";
 import Masonry from "react-layout-masonry";
-
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { motion } from 'framer-motion'
 const images = [
+  "https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0016-768x576.jpg",
   "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/455133922_17899168722024060_8839432986105902310_nfull.jpg",
   "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/454762286_17898929322024060_9149285269556426652_nfull.jpg",
   "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/455127181_17898928254024060_80517522873973738_nfull.jpg",
@@ -15,22 +16,32 @@ const images = [
   "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/451338101_17895606690024060_9136278885865093279_nfull.jpg",
   "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/451450247_17895606390024060_8534976270100613003_nfull.jpg",
   "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/450586784_17895179637024060_2053923880400701924_nfull.jpg",
+  "https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0014-768x576.jpg",
+  "https://cleefocus.com/wp-content/uploads/2023/10/IMG-20231011-WA0001-768x768.jpg"
 ];
 
 export default function Album() {
   return (
-    <main className="pt-24 bg-sgray px-24">
-      <Masonry columns={3} gap={8}>
-        {images.map((img) => (
-          <img
-            src={img}
-            className="w-full object-cover object-left-top select-none pointer-events-none gap-10 !m-0 !p-0"
-            height="400"
-            width="400"
-            alt="thumbnail"
-          />
-        ))}
-      </Masonry>
+    <main className="pt-[106px] bg-sgray">
+      <PhotoProvider>
+        <Masonry columns={3} gap={8}>
+          {images.map((img) => (
+            <PhotoView key={img} src={img}>
+              <motion.img
+                src={img}
+                className="w-full object-cover object-left-top cursor-pointer select-none gap-10 !m-0 !p-0"
+                height="400"
+                width="400"
+                alt="thumbnail"
+                initial={{ y: 25, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 }}
+                viewport={{ once: false, amount: 0.25 }}
+              />
+            </PhotoView>
+          ))}
+        </Masonry>
+      </PhotoProvider>
     </main>
   );
 }
