@@ -20,7 +20,7 @@ export function Gallery(props: { images: string[] }) {
               initial={{ y: 25, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 }}
-              viewport={{ once: false, amount: 0.25 }}
+              viewport={{ once: true, amount: 0.25 }}
             />
           </PhotoView>
         ))}

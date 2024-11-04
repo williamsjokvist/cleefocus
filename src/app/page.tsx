@@ -92,13 +92,13 @@ function Partners() {
   "use client"
 
   return (
-    <section>
+    <section className='px-12'>
       <motion.h2
         initial={{ y: 25, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 }}
         viewport={{ once: true, amount: 0.75 }}
-        className="text-black w-full py-12 text-center text-[clamp(38px,4vw,64px)] px-4"
+        className="text-black w-full py-12 sm:text-center text-[clamp(38px,4vw,64px)] px-4"
       >
         Våra samarbetspartners
       </motion.h2>
@@ -189,7 +189,7 @@ function Features() {
             viewport={{ once: true, amount: 0.25 }}
             className="w-[400px] grid gap-12 place-content-between"
           >
-            <h3 className='text-center text-[clamp(38px,3vw,58px)] font-medium'>{title}</h3>
+            <h3 className='sm:text-center text-[clamp(38px,3vw,58px)] font-medium'>{title}</h3>
             <p className='text-xl break-words'>{description}</p>
             <img
               src={img}

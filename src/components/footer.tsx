@@ -4,7 +4,7 @@ import InstagramIcon from "~icons/mdi/instagram";
 export function Footer() {
   return (
     <footer className="bg-sgray text-white text-center">
-      <div className="p-12 flex flex-wrap gap-12 justify-around items-start">
+      <div className="p-12 sm:flex-row flex flex-wrap gap-12 sm:justify-around sm:items-start">
         <div>
           <Link
             href="https://www.instagram.com/cleefocus/"

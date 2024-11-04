@@ -50,16 +50,16 @@ export function NavBar() {
         `0px`
       );
     }
-  }, [navRef, albumRef])
+  }, [navRef, albumRef, pathname])
 
   return (
     <motion.div
       className={`transition-[padding,background-color] text-black
         text-xl duration-1000 fixed top-0 z-50 w-full
-        sm:flex items-center sm:justify-between
+        md:flex items-center md:justify-between
         ${open ? '' : 'flex'}
         lg:px-[60px] px-4
-        sm:h-auto ${open ? 'h-screen' : 'h-[90px]'}
+        md:h-auto ${open ? 'h-screen' : 'h-[90px]'}
         ${scrolled || open ? 'py-6' : 'py-4'}
         ${scrolled || open ? 'text-black' : 'text-white'}
         ${scrolled || open ? 'bg-white' : 'bg-transparent'}
@@ -69,13 +69,17 @@ export function NavBar() {
         borderColor: scrolled || open ? 'black' : 'transparent',
       }}
     >
-      <dl className={`gap-1 md:gap-8 sm:flex flex-col md:flex-row sm:relative sm:bottom-auto ${open ? 'flex absolute bottom-4' : 'hidden'}`}>
+      <dl className={`gap-1 lg:gap-8 md:flex flex-col lg:flex-row md:relative md:bottom-auto ${open ? 'flex absolute bottom-4' : 'hidden'}`}>
         <div className=''>
-          <dt className='inline md:block font-bold'>Telefon: </dt>
+          <dt className='inline md:block font-bold'>
+            <span className='lg:block hidden'>Telefon</span>
+          </dt>
           <dd className='inline md:block'>036-911 90</dd>
         </div>
         <div>
-          <dt className='inline md:block font-bold'>Epost: </dt>
+          <dt className='inline md:block font-bold'>
+            <span className='lg:block hidden'>Epost</span>
+          </dt>
           <dd className='inline md:block'>info@cleefocus.com</dd>
         </div>
       </dl>
@@ -98,22 +102,22 @@ export function NavBar() {
           />
         </Link>
       </div>
-      <button type="button" className='sm:hidden block' onClick={() => setOpen(!open)}>
+      <button type="button" className='md:hidden block' onClick={() => setOpen(!open)}>
         {open ? <CloseIcon width={45} height={45} />
           : <HamburgerIcon width={45} height={45} />}
       </button>
       <nav
         ref={navRef}
         className={`
-          sm:flex sm:flex-row ${open ? 'flex flex-col' : 'hidden'}
-          text-3xl sm:text-xl
-          pt-24 sm:pt-0
-          h-full sm:h-auto
-          gap-32 sm:gap-12
+          md:flex md:flex-row ${open ? 'flex flex-col' : 'hidden'}
+          text-3xl md:text-xl
+          pt-24 md:pt-0
+          h-full md:h-auto
+          gap-32 md:gap-6 lg:gap-12
           relative
           items-center font-medium
           after:content-['']
-          sm:after:block
+          md:after:block
           after:hidden
           after:absolute
           after:top-full
