@@ -1,7 +1,5 @@
-"use client";
-import Masonry from "react-layout-masonry";
-import { PhotoProvider, PhotoView } from 'react-photo-view';
-import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic';
+
 const images = [
   "https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0016-768x576.jpg",
   "https://cleefocus.com/wp-content/uploads/sb-instagram-feed-images/455133922_17899168722024060_8839432986105902310_nfull.jpg",
@@ -20,28 +18,12 @@ const images = [
   "https://cleefocus.com/wp-content/uploads/2023/10/IMG-20231011-WA0001-768x768.jpg"
 ];
 
+const Gallery = dynamic(() => import('../../components/gallery').then(mod => mod.Gallery), { ssr: false })
+
 export default function Album() {
   return (
     <main className="pt-[106px] bg-sgray">
-      <PhotoProvider>
-        <Masonry columns={{ 480: 1, 640: 2, 1024: 3, 1280: 4 }} gap={8}>
-          {images.map((img) => (
-            <PhotoView key={img} src={img}>
-              <motion.img
-                src={img}
-                className="w-full object-cover object-left-top cursor-pointer select-none gap-10 !m-0 !p-0"
-                height="400"
-                width="400"
-                alt="thumbnail"
-                initial={{ y: 25, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 }}
-                viewport={{ once: false, amount: 0.25 }}
-              />
-            </PhotoView>
-          ))}
-        </Masonry>
-      </PhotoProvider>
+      <Gallery images={images} />
     </main>
   );
 }
