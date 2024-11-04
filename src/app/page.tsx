@@ -150,6 +150,12 @@ function InstagramGallery() {
 
 const features = [
   {
+    title: "Solcellsrengöring ",
+    description:
+      "Rester av damm, sot och pollen kan minska solenergianläggningars och solvärme modulers uteffekt med upp till 20 %. Pris: 1,800 kr upp till 40 paneler.",
+    img: 'https://cleefocus.com/wp-content/uploads/2023/08/IMG_7546-768x960.jpg'
+  },
+  {
     title: "Taktvätt",
     description:
       "Vi erbjuder specialiserad taktvätt, skryddarsedd till dina behov",
@@ -166,13 +172,13 @@ const features = [
     title: "Marktvätt",
     description:
       "Vi erbjuder specialiserad marktvätt som är skräddarsydd efter dina behov",
-    img: 'https://cleefocus.com/wp-content/uploads/2023/10/IMG-20231011-WA0001-768x768.jpg',
+    img: 'https://cleefocus.com/wp-content/uploads/2023/10/IMG-20231011-WA0002-768x1024.jpg',
 
   },
 ];
-export function Features() {
+function Features() {
   return (
-    <div className='flex justify-around px-12 gap-8 flex-wrap'>
+    <div className='flex justify-around px-12 pt-12 gap-8 flex-wrap'>
       {features.map(({ title, description, img }, i) => {
         return (
           <motion.div
@@ -181,15 +187,15 @@ export function Features() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 + i / 2 }}
             viewport={{ once: true, amount: 0.25 }}
-            className="w-[600px] grid place-content-between"
+            className="w-[400px] grid gap-12 place-content-between"
           >
-            <h3 className='text-[clamp(38px,4vw,64px)] font-medium py-12'>{title}</h3>
-            <p className='text-xl pb-12'>{description}</p>
+            <h3 className='text-center text-[clamp(38px,3vw,58px)] font-medium'>{title}</h3>
+            <p className='text-xl break-words'>{description}</p>
             <img
               src={img}
-              width={600}
-              height={400}
-              className='object-cover object-left-top w-full max-h-[450px] rounded-2xl w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
+              width={450}
+              height={350}
+              className='object-cover object-center w-full  max-h-[300px] rounded-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
             />
           </motion.div>
         )

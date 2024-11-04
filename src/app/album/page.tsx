@@ -24,7 +24,7 @@ export default function Album() {
   return (
     <main className="pt-[106px] bg-sgray">
       <PhotoProvider>
-        <Masonry columns={3} gap={8}>
+        <Masonry columns={{ 480: 1, 640: 2, 1024: 3, 1280: 4 }} gap={8}>
           {images.map((img) => (
             <PhotoView key={img} src={img}>
               <motion.img

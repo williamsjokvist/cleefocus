@@ -4,6 +4,8 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { useScrollTo } from "~/hooks/scroll-to";
+import HamburgerIcon from "~icons/mdi/hamburger-menu";
+import CloseIcon from "~icons/mdi/close";
 
 const scrollThreshold = 250
 
@@ -19,6 +21,8 @@ export function NavBar() {
 
   const homeRef = React.useRef<HTMLAnchorElement>(null)
   const albumRef = React.useRef<HTMLAnchorElement>(null)
+
+  const [open, setOpen] = React.useState(false)
 
   React.useEffect(() => {
     if (!navRef.current) return
@@ -50,27 +54,29 @@ export function NavBar() {
 
   return (
     <motion.div
-      className="transition-[padding,background-color] text-black text-xl duration-1000 bg-white fixed top-0 z-50 w-full flex items-center justify-between"
+      className={`transition-[padding,background-color] text-black
+        text-xl duration-1000 fixed top-0 z-50 w-full
+        sm:flex items-center sm:justify-between
+        ${open ? '' : 'flex'}
+        lg:px-[60px] px-4
+        sm:h-auto ${open ? 'h-screen' : 'h-[90px]'}
+        ${scrolled || open ? 'py-6' : 'py-4'}
+        ${scrolled || open ? 'text-black' : 'text-white'}
+        ${scrolled || open ? 'bg-white' : 'bg-transparent'}
+      `}
       style={{
-        backgroundColor: scrolled ? 'white' : 'transparent',
-        color: scrolled ? 'black' : 'white',
-        padding: scrolled ? '12px 60px' : '25px 60px',
         borderBottom: '1px solid',
-        borderColor: scrolled ? 'black' : 'transparent'
+        borderColor: scrolled || open ? 'black' : 'transparent',
       }}
     >
-      <dl className="flex gap-8">
-        <div>
-          <dt className='font-bold'>Telefon</dt>
-          <dd>
-            036-911 90
-          </dd>
+      <dl className={`gap-1 md:gap-8 sm:flex flex-col md:flex-row sm:relative sm:bottom-auto ${open ? 'flex absolute bottom-4' : 'hidden'}`}>
+        <div className=''>
+          <dt className='inline md:block font-bold'>Telefon: </dt>
+          <dd className='inline md:block'>036-911 90</dd>
         </div>
         <div>
-          <dt className='font-bold'>Epost</dt>
-          <dd>
-            info@cleefocus.com
-          </dd>
+          <dt className='inline md:block font-bold'>Epost: </dt>
+          <dd className='inline md:block'>info@cleefocus.com</dd>
         </div>
       </dl>
       <div className='absolute left-0 w-screen flex justify-center -z-10'>
@@ -80,7 +86,7 @@ export function NavBar() {
             alt="Cleefocus logo"
             className="z-10 max-w-[200px] h-[42px]"
             style={{
-              filter: scrolled ? 'grayscale(1) brightness(0)' : 'grayscale(1) brightness(8)'
+              filter: scrolled || open ? 'grayscale(1) brightness(0)' : 'grayscale(1) brightness(8)'
             }}
             onClick={(e) => {
               if (pathname === '/') {
@@ -91,13 +97,23 @@ export function NavBar() {
           />
         </Link>
       </div>
-
+      <button type="button" className='sm:hidden block' onClick={() => setOpen(!open)}>
+        {open ? <CloseIcon width={45} height={45} />
+          : <HamburgerIcon width={45} height={45} />}
+      </button>
       <nav
         ref={navRef}
-        className={`relative
-          flex gap-12 items-center font-medium
+        className={`
+          sm:flex sm:flex-row ${open ? 'flex flex-col' : 'hidden'}
+          text-3xl sm:text-xl
+          pt-24 sm:pt-0
+          h-full sm:h-auto
+          gap-32 sm:gap-12
+          relative
+          items-center font-medium
           after:content-['']
-          after:block
+          sm:after:block
+          after:hidden
           after:absolute
           after:top-full
           after:h-1

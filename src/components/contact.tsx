@@ -25,7 +25,7 @@ export function ContactForm() {
         </h2>
         <p className='text-xl text-center px-4 pb-12'>
           Kontakta oss gärna för en kostnadsfri offert,
-          eller för att höra mer om hur vi kan hjälpa dig och din fastighet
+          eller för att höra mer om hur vi kan hjälpa dig med din fastighet
         </p>
       </motion.header>
 
