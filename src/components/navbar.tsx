@@ -89,8 +89,9 @@ export function NavBar() {
               filter: scrolled || open ? 'grayscale(1) brightness(0)' : 'grayscale(1) brightness(8)'
             }}
             onClick={(e) => {
+              setOpen(false)
+              scrollTo()
               if (pathname === '/') {
-                scrollTo()
                 e.preventDefault()
               }
             }}
@@ -166,8 +167,9 @@ export function NavBar() {
         }}
       >
         <Link ref={homeRef} href="/" className='nav-item' onClick={(e) => {
+          setOpen(false)
+          scrollTo()
           if (pathname === '/') {
-            scrollTo()
             e.preventDefault()
           }
         }}>Hem</Link>
@@ -176,8 +178,9 @@ export function NavBar() {
           className='nav-item'
 
           onClick={(e) => {
+            setOpen(false)
+            scrollTo()
             if (pathname === '/about') {
-              scrollTo()
               e.preventDefault()
             }
           }}>Om oss</Link>
@@ -188,8 +191,9 @@ export function NavBar() {
             }
           }}
           onClick={(e) => {
+            setOpen(false)
+            scrollTo()
             if (pathname === '/album') {
-              scrollTo()
               e.preventDefault()
             }
           }}
