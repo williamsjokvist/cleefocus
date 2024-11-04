@@ -108,7 +108,7 @@ function Partners() {
             key={p}
             initial={{ y: 35, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ ease: 'easeOut', duration: .75, delay: 0.25 + i / 2 }}
+            transition={{ ease: 'easeOut', duration: .75, delay: 0.125 + (i / 3) }}
             viewport={{ once: true, amount: 1 }}
             width={200}
             height={50}
@@ -185,7 +185,7 @@ function Features() {
             key={title}
             initial={{ y: 25, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 + i / 2 }}
+            transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.125 + (i / 3) }}
             viewport={{ once: true, amount: 0.25 }}
             className="w-[400px] grid gap-12 place-content-between"
           >
