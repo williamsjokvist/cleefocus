@@ -22,7 +22,7 @@ const Gallery = dynamic(() => import('../../components/gallery').then(mod => mod
 
 export default function Album() {
   return (
-    <main className="pt-[106px] bg-sgray">
+    <main className="pt-[106px] bg-sgray min-h-screen">
       <Gallery images={images} />
     </main>
   );
