@@ -1,10 +1,9 @@
 "use client";
 import React from 'react'
-import { motion, useScroll, useAnimate, stagger } from "framer-motion";
+import { motion, useScroll, useTransform, useAnimate, stagger } from "framer-motion";
 import Link from "next/link";
 import { Carousel } from "~/components/ui/carousel";
 import InstagramIcon from "~icons/mdi/instagram";
-import { StickyScroll } from "../components/ui/sticky-scroll";
 import { ContactForm } from "~/components/contact";
 import { Button } from "~/components/ui/button";
 import { useScrollTo } from '~/hooks/scroll-to';
@@ -33,7 +32,9 @@ export default function Home() {
 
 function Intro() {
   "use client"
-
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 300])
   const scrollTo = useScrollTo({ ease: 'easeInOut', duration: 1.25 });
 
   return (
@@ -48,6 +49,7 @@ function Intro() {
       />
       <div className="relative inset-0 flex flex-col justify-end items-center">
         <motion.div
+          style={{ y }}
           animate={{
             opacity: [0, 1],
             y: [50, 0],
