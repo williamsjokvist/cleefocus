@@ -127,7 +127,10 @@ export function NavBar() {
           after:transition-[transform,width]
           after:duration-700
           after:rounded-full
-          ${scrolled ? 'after:bg-black' : 'after:bg-orange-400'}
+          ${!scrolled
+            ? 'after:bg-gradient-to-br after:to-[#fa744a] after:from-[#ffc63f] after:shadow-[0px_0px_5px] after:shadow-[#fa744a]'
+            : 'after:bg-black'
+          }
         `}
         onMouseLeave={(e) => {
           if (navRef.current) {
