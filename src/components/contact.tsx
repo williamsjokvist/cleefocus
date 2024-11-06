@@ -23,7 +23,7 @@ export function ContactForm() {
           className="text-black w-full py-12 sm:text-center text-[clamp(38px,4vw,64px)] focus:outline-black">
           Kontaktformulär
         </h2>
-        <p className='text-xl sm:text-center pb-12'>
+        <p className='md:max-w-[720px] mx-auto text-xl sm:text-center pb-12'>
           Kontakta oss gärna för en kostnadsfri offert,
           eller för att höra mer om hur vi kan hjälpa dig med din fastighet
         </p>
