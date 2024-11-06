@@ -32,14 +32,14 @@ export default function Home() {
 
 function Intro() {
   "use client"
-  const ref = React.useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300])
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, 800])
   const scrollTo = useScrollTo({ ease: 'easeInOut', duration: 1.25 });
 
   return (
     <section className='w-screen h-screen flex items-center relative overflow-y-hidden before:content-[""] before:absolute before:bottom-0 before:w-full before:top-0 before:bg-black  before:from-black before:opacity-50'>
-      <video
+      <motion.video
+        style={{ y }}
         className="absolute top-0 -z-50 object-cover max-h-none min-w-full h-auto min-h-full"
         src="https://cleefocus.com/wp-content/uploads/2023/09/Cleefocus-film.mp4"
         autoPlay
@@ -49,7 +49,6 @@ function Intro() {
       />
       <div className="relative inset-0 flex flex-col justify-end items-center">
         <motion.div
-          style={{ y }}
           animate={{
             opacity: [0, 1],
             y: [50, 0],
