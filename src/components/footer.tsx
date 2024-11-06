@@ -19,12 +19,20 @@ export function Footer() {
             alt="rot"
           />
         </div>
-        <dl className="text-left text-xl flex flex-col gap-5">
+        <dl className="relative text-left text-xl flex flex-col gap-5">
           <dt className="text-3xl font-extrabold">Tjänster</dt>
-          <dd>Solcellsrengöring</dd>
-          <dd>Taktvätt</dd>
-          <dd>Marktvätt</dd>
-          <dd>Takmålning</dd>
+          <dd className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+            <span className='indent-4 inline-block'>Solcellsrengöring</span>
+          </dd>
+          <dd className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+            <span className='indent-4 inline-block'>Taktvätt</span>
+          </dd>
+          <dd className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+            <span className='indent-4 inline-block'>Marktvätt</span>
+          </dd>
+          <dd className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+            <span className='indent-4 inline-block'>Takmålning</span>
+          </dd>
         </dl>
 
         <dl className="text-left text-xl flex flex-col gap-5">

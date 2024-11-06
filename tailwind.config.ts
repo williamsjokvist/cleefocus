@@ -18,6 +18,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-insta":
           "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)",
+        "gradient-orange":
+          "radial-gradient(100% 100% at 100% 0, #ffc63f 0, #fa744a 100%)",
       },
       keyframes: {
         fade: {

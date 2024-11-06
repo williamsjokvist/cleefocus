@@ -70,10 +70,9 @@ function Intro() {
           <div className="text-[clamp(18px,4vw,24px)] flex flex-wrap gap-10">
             <Button
               style={{
-                background: 'radial-gradient(100% 100% at 100% 0, #ffc63f 0, #fa744a 100%)',
                 padding: '0px'
               }}
-              className='group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
+              className='bg-gradient-orange group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
               onClick={() => scrollTo(document.querySelector('#contact-form'), -200)}
             >
               <span className='text-[#696969] group-hover:text-white group-hover:bg-opacity-0 duration-300 transition-colors px-8 py-2 bg-white rounded-full w-full h-full block bg-opacity-100'>Kontakta oss</span>
