@@ -34,7 +34,7 @@ export function ContactForm() {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.525 }}
         viewport={{ once: true, amount: 0.5 }}
-        className="md:max-w-[720px] text-2xl px-4 flex flex-col gap-4 justify-items-center items-center py-8 mx-auto"
+        className="md:max-w-[720px] text-2xl flex flex-col gap-4 justify-items-center items-center mx-auto"
       >
         <input type="text" className="w-full bg-[#f9f9f9] px-4 py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="För- och efternamn" />
         <div className='flex flex-col gap-[inherit] md:flex-row justify-between w-full'>
