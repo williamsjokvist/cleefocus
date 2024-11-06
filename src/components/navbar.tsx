@@ -104,127 +104,129 @@ export function NavBar() {
         {open ? <CloseIcon width={45} height={45} />
           : <HamburgerIcon width={45} height={45} />}
       </button>
-      <nav
-        ref={navRef}
-        className={`
-          md:flex md:flex-row ${open ? 'flex flex-col' : 'hidden'}
-          text-3xl md:text-xl
-          pt-24 md:pt-0
-          h-full md:h-auto
-          gap-32 md:gap-6 lg:gap-12
-          relative
-          items-center font-medium
-          after:content-['']
-          md:after:block
-          after:hidden
-          after:absolute
-          after:top-[80%]
-          after:h-1
-          after:w-[var(--underline-width)]
-          after:translate-x-[var(--underline-offset-x)]
-          after:transition-[transform,width]
-          after:duration-700
-          after:rounded-full
-          ${!scrolled
-            ? 'after:bg-gradient-to-br after:to-[#fa744a] after:from-[#ffc63f] after:shadow-[0px_0px_5px] after:shadow-[#fa744a]'
-            : 'after:bg-black'
-          }
-        `}
-        onMouseLeave={(e) => {
-          if (navRef.current) {
-            if (albumRef.current && pathname === '/album') {
-              navRef.current.style.setProperty(
-                "--underline-offset-x",
-                `${albumRef.current.offsetLeft}px`
-              );
-              navRef.current.style.setProperty(
-                "--underline-width",
-                `${albumRef.current.offsetWidth}px`
-              );
-            } else if (aboutRef.current && pathname === '/about') {
-              navRef.current.style.setProperty(
-                "--underline-offset-x",
-                `${aboutRef.current.offsetLeft}px`
-              );
-              navRef.current.style.setProperty(
-                "--underline-width",
-                `${aboutRef.current.offsetWidth}px`
-              );
-            } else if (homeRef.current && pathname === '/') {
-              navRef.current.style.setProperty(
-                "--underline-offset-x",
-                `${homeRef.current.offsetLeft}px`
-              );
-              navRef.current.style.setProperty(
-                "--underline-width",
-                `${homeRef.current.offsetWidth}px`
-              );
-            } else {
-              navRef.current.style.setProperty(
-                "--underline-width",
-                `0px`
-              );
+      <div className='justify-center md:justify-normal items-center gap-12 flex'>
+        <nav
+          ref={navRef}
+          className={`
+            md:flex md:flex-row ${open ? 'flex flex-col' : 'hidden'}
+            text-3xl md:text-xl
+            pt-24 md:pt-0
+            h-full md:h-auto
+            gap-32 md:gap-6 lg:gap-12
+            relative
+            items-center font-medium
+            after:content-['']
+            md:after:block
+            after:hidden
+            after:absolute
+            after:top-full
+            after:h-1
+            after:w-[var(--underline-width)]
+            after:translate-x-[var(--underline-offset-x)]
+            after:transition-[transform,width]
+            after:duration-700
+            after:rounded-full
+            ${!scrolled
+              ? 'after:bg-gradient-to-br after:to-[#fa744a] after:from-[#ffc63f] after:shadow-[0px_0px_5px] after:shadow-[#fa744a]'
+              : 'after:bg-black'
             }
-          }
-        }}
-        onMouseOver={(e) => {
-          if (navRef.current && (e.target as HTMLElement).classList.contains('nav-item')) {
-            navRef.current.style.setProperty(
-              "--underline-offset-x",
-              `${(e.target as HTMLElement).offsetLeft}px`
-            );
-            navRef.current.style.setProperty(
-              "--underline-width",
-              `${(e.target as HTMLElement).offsetWidth}px`
-            );
-          }
-        }}
-      >
-        <Link ref={homeRef} href="/" className='nav-item' onClick={(e) => {
-          setOpen(false)
-          scrollTo()
-          if (pathname === '/') {
-            e.preventDefault()
-          }
-        }}>Hem</Link>
-        <Link
-          ref={aboutRef}
-          href="/about"
-          className='nav-item'
-          style={{
-            ...pathname === '/about' && {
-              fontWeight: 'extrabold',
+          `}
+          onMouseLeave={(e) => {
+            if (navRef.current) {
+              if (albumRef.current && pathname === '/album') {
+                navRef.current.style.setProperty(
+                  "--underline-offset-x",
+                  `${albumRef.current.offsetLeft}px`
+                );
+                navRef.current.style.setProperty(
+                  "--underline-width",
+                  `${albumRef.current.offsetWidth}px`
+                );
+              } else if (aboutRef.current && pathname === '/about') {
+                navRef.current.style.setProperty(
+                  "--underline-offset-x",
+                  `${aboutRef.current.offsetLeft}px`
+                );
+                navRef.current.style.setProperty(
+                  "--underline-width",
+                  `${aboutRef.current.offsetWidth}px`
+                );
+              } else if (homeRef.current && pathname === '/') {
+                navRef.current.style.setProperty(
+                  "--underline-offset-x",
+                  `${homeRef.current.offsetLeft}px`
+                );
+                navRef.current.style.setProperty(
+                  "--underline-width",
+                  `${homeRef.current.offsetWidth}px`
+                );
+              } else {
+                navRef.current.style.setProperty(
+                  "--underline-width",
+                  `0px`
+                );
+              }
             }
           }}
-          onClick={(e) => {
-            setOpen(false)
-            scrollTo()
-            if (pathname === '/about') {
-              e.preventDefault()
-            }
-          }}>Om oss</Link>
-        <Link ref={albumRef} className='nav-item' href="/album"
-          style={{
-            ...pathname === '/album' && {
-              fontWeight: 'extrabold',
-            }
-          }}
-          onClick={(e) => {
-            setOpen(false)
-            scrollTo()
-            if (pathname === '/album') {
-              e.preventDefault()
+          onMouseOver={(e) => {
+            if (navRef.current && (e.target as HTMLElement).classList.contains('nav-item')) {
+              navRef.current.style.setProperty(
+                "--underline-offset-x",
+                `${(e.target as HTMLElement).offsetLeft}px`
+              );
+              navRef.current.style.setProperty(
+                "--underline-width",
+                `${(e.target as HTMLElement).offsetWidth}px`
+              );
             }
           }}
         >
-          Galleri
-        </Link>
+          <Link ref={homeRef} href="/" className='nav-item' onClick={(e) => {
+            setOpen(false)
+            scrollTo()
+            if (pathname === '/') {
+              e.preventDefault()
+            }
+          }}>Hem</Link>
+          <Link
+            ref={aboutRef}
+            href="/about"
+            className='nav-item'
+            style={{
+              ...pathname === '/about' && {
+                fontWeight: 'extrabold',
+              }
+            }}
+            onClick={(e) => {
+              setOpen(false)
+              scrollTo()
+              if (pathname === '/about') {
+                e.preventDefault()
+              }
+            }}>Om oss</Link>
+          <Link ref={albumRef} className='nav-item' href="/album"
+            style={{
+              ...pathname === '/album' && {
+                fontWeight: 'extrabold',
+              }
+            }}
+            onClick={(e) => {
+              setOpen(false)
+              scrollTo()
+              if (pathname === '/album') {
+                e.preventDefault()
+              }
+            }}
+          >
+            Galleri
+          </Link>
+        </nav>
         <Link
           href='/'
           style={{
             padding: '0px'
           }}
-          className='bg-gradient-orange group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
+          className='hidden md:block bg-gradient-orange group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
           onClick={(e) => {
             setOpen(false)
             if (pathname !== '/') {
@@ -244,7 +246,7 @@ export function NavBar() {
             Få en offert
           </span>
         </Link>
-      </nav>
+      </div>
     </motion.div >
   );
 }
