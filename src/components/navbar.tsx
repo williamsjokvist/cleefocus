@@ -76,7 +76,6 @@ export function NavBar() {
         ${scrolled || open ? 'text-black' : 'text-white'}
         ${scrolled || open ? 'bg-white' : 'bg-transparent'}
         ${scrolled || open ? 'shadow-md' : 'shadow-none'}
-
       `}
       style={{
         borderColor: scrolled || open ? 'black' : 'transparent',
@@ -227,6 +226,7 @@ export function NavBar() {
           }}
           className='bg-gradient-orange group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
           onClick={(e) => {
+            setOpen(false)
             if (pathname !== '/') {
               setTimeout(() => scrollTo(document.querySelector('#contact-form'), -200), 500)
               return
