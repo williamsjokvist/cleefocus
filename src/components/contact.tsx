@@ -36,20 +36,20 @@ export function ContactForm() {
         viewport={{ once: true, amount: 0.5 }}
         className="text-2xl px-4 flex flex-col gap-4 justify-items-center items-center py-8 mx-auto">
         <div className="flex flex-wrap gap-7 justify-center">
-          <input type="text" className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black bg-transparent" placeholder="För- och efternamn" />
+          <input type="text" className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="För- och efternamn" />
           <input
             type="tel"
             pattern="[+]{1}[0-9]{11,14}"
             placeholder="Telefon"
-            className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black bg-transparent"
+            className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors"
             onChange={(e) => setPhoneNumber(e.target.value.replace(/[^0-9\+]/g, ""))}
             value={phoneNumber}
             maxLength={15}
           />
-          <input type="email" className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black bg-transparent" placeholder="Epostaddress" />
+          <input type="email" className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="Epostaddress" />
         </div>
         <textarea
-          className="bg-[#f9f9f9] p-4 max-w-[720px] w-full h-[140px] border-b-[1px] border-black bg-transparent resize-none"
+          className="bg-[#f9f9f9] p-4 max-w-[720px] w-full h-[140px] border-b-[1px] border-black focus:bg-transparent resize-none transition-colors"
           placeholder="Meddelande"
         />
 
