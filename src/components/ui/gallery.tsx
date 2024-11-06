@@ -29,7 +29,7 @@ export const Gallery = ({
 
   return (
     <div
-      className={cn("h-[40rem] items-start overflow-y-auto w-full", className)}
+      className={cn("h-[40rem] items-start overflow-y-hidden w-full", className)}
       ref={gridRef}
     >
       <div

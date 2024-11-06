@@ -40,7 +40,7 @@ function Intro() {
   const scrollTo = useScrollTo({ ease: 'easeInOut', duration: 1.25 });
 
   return (
-    <section className='w-screen h-screen flex items-center relative overflow-y-hidden before:content-[""] before:absolute before:bottom-0 before:w-full before:top-0 before:bg-black  before:from-black before:opacity-50'>
+    <section className='w-screen min-h-screen pt-[180px] pb-[150px] flex items-center relative overflow-y-hidden before:content-[""] before:absolute before:bottom-0 before:w-full before:top-0 before:bg-black  before:from-black before:opacity-50'>
       <motion.video
         style={{ y }}
         className="absolute top-0 -z-50 object-cover max-h-none min-w-full h-auto min-h-full"
@@ -87,26 +87,27 @@ function Intro() {
               <InstagramIcon width={45} height={45} className='bg-gradient-insta rounded-xl p-[2px]' /> Följ oss på Instagram
             </Link>
           </div>
-          <div className={`top-[250px] sm:top-[300px] text-white text-[clamp(18px,4vw,24px)] sm:gap-12 flex gap-4 flex-col sm:flex-row relative`}>
-            <div className='flex gap-4 items-center'>
-              <PhoneIcon width={45} height={45}
-                style={{
-                  filter: 'drop-shadow(0px 0px 1.5px #f90)'
-                }}
-                className='text-orange-400'
-              />
-              <a href='tel:03691190' className='hover:underline'>036-911 90</a>
-            </div>
-            <div className='flex gap-4 items-center'>
-              <EmailIcon width={45} height={45}
-                style={{
-                  filter: 'drop-shadow(0px 0px 1.5px #f90)'
-                }}
-                className='text-orange-400' />
-              <a href='mailto:info@cleefocus.com' className='hover:underline'>info@cleefocus.com</a>
-            </div>
-          </div>
         </motion.div>
+
+      </div>
+      <div className={`absolute bottom-4 left-4 sm:bottom-10 sm:left-10 text-white text-[clamp(18px,4vw,24px)] sm:gap-12 flex flex-wrap gap-6  `}>
+        <div className='flex gap-4 items-center'>
+          <PhoneIcon width={45} height={45}
+            style={{
+              filter: 'drop-shadow(0px 0px 1.5px #f90)'
+            }}
+            className='w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] text-orange-400'
+          />
+          <a href='tel:03691190' className='hover:underline'>036-911 90</a>
+        </div>
+        <div className='flex gap-4 items-center'>
+          <EmailIcon width={45} height={45}
+            style={{
+              filter: 'drop-shadow(0px 0px 1.5px #f90)'
+            }}
+            className='w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] text-orange-400' />
+          <a href='mailto:info@cleefocus.com' className='hover:underline'>info@cleefocus.com</a>
+        </div>
       </div>
     </section>
   );
