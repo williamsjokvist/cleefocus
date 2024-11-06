@@ -1,18 +1,16 @@
 "use client"
 import Link from "next/link";
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { useScrollTo } from "~/hooks/scroll-to";
 import HamburgerIcon from "~icons/mdi/hamburger-menu";
 import CloseIcon from "~icons/mdi/close";
-import { Button } from "./ui/button";
 
 const scrollThreshold = 250
 
 export function NavBar() {
   const pathname = usePathname()
-  const router = useRouter()
   const { scrollY } = useScroll();
   const scrollTo = useScrollTo({ ease: 'easeInOut', duration: 1.25 });
   const [pageScroll, setPageScroll] = React.useState(0)
@@ -66,13 +64,13 @@ export function NavBar() {
 
   return (
     <motion.div
-      className={`transition-[padding,background-color,shadow,color] text-black
+      className={`transition-[padding,background-color,shadow] text-black
         text-xl duration-1000 fixed top-0 z-50 w-full
         md:flex items-center md:justify-between
         ${open ? '' : 'flex'}
-        lg:px-[30px] px-4
+        lg:px-[60px] px-4
         md:h-auto ${open ? 'h-screen' : 'h-[90px]'}
-        ${scrolled || open ? 'py-6' : 'py-6'}
+        ${scrolled || open ? 'py-6' : 'py-4'}
         ${scrolled || open ? 'text-black' : 'text-white'}
         ${scrolled || open ? 'bg-white' : 'bg-transparent'}
         ${scrolled || open ? 'shadow-md' : 'shadow-none'}
@@ -82,7 +80,21 @@ export function NavBar() {
         borderColor: scrolled || open ? 'black' : 'transparent',
       }}
     >
-      <div className='absolute left-0 w-screen flex justify-center -z-10 md:relative md:left-auto md:w-auto md:block'>
+      <dl className={`gap-1 lg:gap-8 md:flex flex-col lg:flex-row md:relative md:bottom-auto ${open ? 'flex absolute bottom-4' : 'hidden'}`}>
+        <div className=''>
+          <dt className='inline md:block font-bold'>
+            <span className='lg:block hidden'>Telefon</span>
+          </dt>
+          <dd className='inline md:block'>036-911 90</dd>
+        </div>
+        <div>
+          <dt className='inline md:block font-bold'>
+            <span className='lg:block hidden'>Epost</span>
+          </dt>
+          <dd className='inline md:block'>info@cleefocus.com</dd>
+        </div>
+      </dl>
+      <div className='absolute left-0 w-screen flex justify-center -z-10'>
         <Link href="/">
           <img
             src="/logo.png"
@@ -119,7 +131,7 @@ export function NavBar() {
           md:after:block
           after:hidden
           after:absolute
-          after:top-[80%]
+          after:top-full
           after:h-1
           after:w-[var(--underline-width)]
           after:translate-x-[var(--underline-offset-x)]
@@ -219,30 +231,6 @@ export function NavBar() {
           }}
         >
           Galleri
-        </Link>
-        <Link
-          href='/'
-          style={{
-            padding: '0px'
-          }}
-          className='bg-gradient-orange group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
-          onClick={(e) => {
-            if (pathname !== '/') {
-              setTimeout(() => scrollTo(document.querySelector('#contact-form'), -200), 500)
-              return
-            } else {
-              e.preventDefault()
-            }
-            scrollTo(document.querySelector('#contact-form'), -200)
-          }}
-        >
-          <span className={`
-            text-[#696969] group-hover:text-white group-hover:bg-opacity-0 transition-colors px-8 py-2
-             rounded-full w-full h-full block bg-opacity-100 duration-300
-            ${scrolled || open ? 'bg-black text-white' : 'bg-white'}
-            `}>
-            Få en offert
-          </span>
         </Link>
       </nav>
     </motion.div >

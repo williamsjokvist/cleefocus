@@ -1,6 +1,6 @@
 "use client";
 import { animate, motion, useMotionValue } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useMeasure from "react-use-measure";
 
 export function Carousel(props: { images: string[] }) {

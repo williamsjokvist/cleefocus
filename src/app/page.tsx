@@ -1,9 +1,12 @@
 "use client";
 import React from 'react'
-import { motion, useScroll, useTransform, useAnimate, stagger } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { Carousel } from "~/components/ui/carousel";
 import InstagramIcon from "~icons/mdi/instagram";
+import PhoneIcon from "~icons/mdi/phone";
+import EmailIcon from "~icons/mdi/email";
+
 import { ContactForm } from "~/components/contact";
 import { Button } from "~/components/ui/button";
 import { useScrollTo } from '~/hooks/scroll-to';
@@ -74,7 +77,7 @@ function Intro() {
               className='bg-gradient-orange group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
               onClick={() => scrollTo(document.querySelector('#contact-form'), -200)}
             >
-              <span className='text-[#696969] group-hover:text-white group-hover:bg-opacity-0 duration-300 transition-colors px-8 py-2 bg-white rounded-full w-full h-full block bg-opacity-100'>Kontakta oss</span>
+              <span className='text-[#696969] group-hover:text-white group-hover:bg-opacity-0 duration-300 transition-colors px-8 py-2 bg-white rounded-full w-full h-full block bg-opacity-100'>Få en offert</span>
             </Button>
             <Link
               href="https://www.instagram.com/cleefocus/"
@@ -83,6 +86,25 @@ function Intro() {
             >
               <InstagramIcon width={45} height={45} className='bg-gradient-insta rounded-xl p-[2px]' /> Följ oss på Instagram
             </Link>
+          </div>
+          <div className={`top-[250px] sm:top-[300px] text-white text-[clamp(18px,4vw,24px)] sm:gap-12 flex gap-4 flex-col sm:flex-row relative`}>
+            <div className='flex gap-4 items-center'>
+              <PhoneIcon width={45} height={45}
+                style={{
+                  filter: 'drop-shadow(0px 0px 1.5px #f90)'
+                }}
+                className='text-orange-400'
+              />
+              <a href='tel:03691190' className='hover:underline'>036-911 90</a>
+            </div>
+            <div className='flex gap-4 items-center'>
+              <EmailIcon width={45} height={45}
+                style={{
+                  filter: 'drop-shadow(0px 0px 1.5px #f90)'
+                }}
+                className='text-orange-400' />
+              <a href='mailto:info@cleefocus.com' className='hover:underline'>info@cleefocus.com</a>
+            </div>
           </div>
         </motion.div>
       </div>
