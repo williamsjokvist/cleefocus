@@ -41,13 +41,13 @@ export function Footer() {
           <dd>036-911 90</dd>
         </dl>
       </div>
-      <div className="flex flex-wrap gap-4 justify-between items-center py-12 px-16 border-t-[1px] border-white">
+      <div className='relative flex flex-wrap gap-4 justify-between items-center py-12 px-16 before:bg-gradient-orange before:content-[""] before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full'>
         <img
           src="/logo.png"
           alt="Cleefocus logo"
           className="max-w-[200px] h-[42px]"
         />
-        <span>Copyright 2024 © CleeFocus AB</span>
+        <small className='text-lg'>Copyright 2024 © CleeFocus AB</small>
       </div>
     </footer>
   );

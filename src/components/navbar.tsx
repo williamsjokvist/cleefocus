@@ -54,7 +54,7 @@ export function NavBar() {
 
   return (
     <motion.div
-      className={`transition-[padding,background-color] text-black
+      className={`transition-[padding,background-color,shadow] text-black
         text-xl duration-1000 fixed top-0 z-50 w-full
         md:flex items-center md:justify-between
         ${open ? '' : 'flex'}
@@ -63,9 +63,10 @@ export function NavBar() {
         ${scrolled || open ? 'py-6' : 'py-4'}
         ${scrolled || open ? 'text-black' : 'text-white'}
         ${scrolled || open ? 'bg-white' : 'bg-transparent'}
+        ${scrolled || open ? 'shadow-md' : 'shadow-none'}
+
       `}
       style={{
-        borderBottom: '1px solid',
         borderColor: scrolled || open ? 'black' : 'transparent',
       }}
     >
