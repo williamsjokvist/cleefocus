@@ -34,23 +34,32 @@ export function ContactForm() {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.525 }}
         viewport={{ once: true, amount: 0.5 }}
-        className="text-2xl px-4 flex flex-col gap-4 justify-items-center items-center py-8 mx-auto">
-        <div className="flex flex-wrap gap-7 justify-center">
-          <input type="text" className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="För- och efternamn" />
+        className="max-w-[720px] text-2xl px-4 flex flex-col gap-4 justify-items-center items-center py-8 mx-auto">
+        <input type="text" className="w-full bg-[#f9f9f9] px-4 py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="För- och efternamn" />
+        <div className='flex justify-between w-full'>
+          <input type="text" className="bg-[#f9f9f9] max-w-[430px] w-full px-4 py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="Address" />
+          <input type="text" className="bg-[#f9f9f9] max-w-[250px] w-full px-4 py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="Postnummer" />
+        </div>
+        <div className='flex flex-wrap justify-between w-full'>
           <input
             type="tel"
             pattern="[+]{1}[0-9]{11,14}"
             placeholder="Telefon"
-            className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors"
+            className="bg-[#f9f9f9] px-4 max-w-[340px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors"
             onChange={(e) => setPhoneNumber(e.target.value.replace(/[^0-9\+]/g, ""))}
             value={phoneNumber}
             maxLength={15}
           />
-          <input type="email" className="bg-[#f9f9f9] px-4 max-w-[320px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="Epostaddress" />
+          <input type="email" className="bg-[#f9f9f9] px-4 max-w-[340px] py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="Epostaddress" />
         </div>
         <textarea
-          className="bg-[#f9f9f9] p-4 max-w-[720px] w-full h-[140px] border-b-[1px] border-black focus:bg-transparent resize-none transition-colors"
+          className="overflow-y-hidden h-auto bg-[#f9f9f9] p-4 w-full min-h-[140px] border-b-[1px] border-black focus:bg-transparent resize-none transition-colors"
           placeholder="Meddelande"
+          onInput={(e) => {
+            const el = e.target as HTMLTextAreaElement
+            el.style.height = `auto`;
+            el.style.height = `${el.scrollHeight}px`;
+          }}
         />
 
         <Button className="mt-8 block mx-auto bg-sgray text-white text-2xl">Skicka</Button>
