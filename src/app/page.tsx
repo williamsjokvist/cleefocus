@@ -130,11 +130,11 @@ function Partners() {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.325 }}
         viewport={{ once: true, amount: 0.75 }}
-        className="text-black w-full py-12 sm:text-center text-[clamp(38px,4vw,64px)] px-4"
+        className="text-black w-full py-6 md:py-12 text-center text-xl sm:text-4xl md:text-[clamp(38px,3vw,58px)] px-4"
       >
         Våra samarbetspartners
       </motion.h2>
-      <div className="flex items-center justify-center gap-20 flex-wrap py-12">
+      <div className="flex items-center justify-center gap-12 md:gap-20 flex-wrap py-12">
         {partners.map((p, i) => (
           <motion.img
             key={p}
@@ -145,7 +145,7 @@ function Partners() {
             width={200}
             height={50}
             src={p}
-            className="pointer-events-none select-none"
+            className="pointer-events-none select-none w-[90px] sm:w-[150px] md:w-[200px] h-full"
             style={{
               ...i === 3 && {
                 filter: "invert(1) grayscale(1) contrast(2)"
@@ -210,7 +210,7 @@ const features = [
 ];
 function Features() {
   return (
-    <div className='flex justify-around px-12 pt-12 gap-8 flex-wrap'>
+    <div className='justify-items-center grid grid-rows-2 grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 px-4 pt-4 md:p-8 lg:px-12 lg:pt-12 gap-4 md:gap-8 xl:gap-12'>
       {features.map(({ title, description, img }, i) => {
         return (
           <motion.div
@@ -219,15 +219,15 @@ function Features() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.125 + (i / 3) }}
             viewport={{ once: true, amount: 0.25 }}
-            className="w-[400px] grid gap-12 place-content-between"
+            className="max-w-[400px] w-full grid gap-4 lg:gap-12 place-content-between"
           >
-            <h3 className='sm:text-center text-[clamp(38px,3vw,58px)] font-medium'>{title}</h3>
-            <p className='text-xl break-words'>{description}</p>
+            <h3 className='md:text-center text-xl sm:text-4xl md:text-[clamp(38px,3vw,58px)] font-medium'>{title}</h3>
+            <p className='text-md md:text-xl break-words'>{description}</p>
             <img
               src={img}
               width={450}
               height={350}
-              className='object-cover object-center w-full  max-h-[300px] rounded-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
+              className='object-cover object-center w-full h-[150px] md:w-full md:h-[300px] md:h-full rounded-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
             />
           </motion.div>
         )

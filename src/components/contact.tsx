@@ -9,7 +9,7 @@ export function ContactForm() {
   return (
     <form
       method="POST"
-      className="bg-white pb-12 px-12"
+      className="bg-white p-6 lg:p-12"
       id='contact-form'
     >
       <motion.header
@@ -20,10 +20,10 @@ export function ContactForm() {
       >
         <h2
 
-          className="text-black w-full py-12 sm:text-center text-[clamp(38px,4vw,64px)] focus:outline-black">
+          className="text-black w-full pb-6 md:py-12 sm:text-center text-xl sm:text-4xl md:text-[clamp(38px,3vw,58px)] focus:outline-black">
           Kontaktformulär
         </h2>
-        <p className='md:max-w-[720px] mx-auto text-xl sm:text-center pb-12'>
+        <p className='md:max-w-[720px] mx-auto text-lg md:text-xl sm:text-center pb-12'>
           Kontakta oss gärna för en kostnadsfri offert,
           eller för att höra mer om hur vi kan hjälpa dig med din fastighet
         </p>
@@ -34,7 +34,7 @@ export function ContactForm() {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.525 }}
         viewport={{ once: true, amount: 0.5 }}
-        className="md:max-w-[720px] text-2xl flex flex-col gap-4 justify-items-center items-center mx-auto"
+        className="md:max-w-[720px] text-md md:text-2xl flex flex-col gap-4 justify-items-center items-center mx-auto"
       >
         <input type="text" className="w-full bg-[#f9f9f9] px-4 py-4 border-b-[1px] border-black focus:bg-transparent transition-colors" placeholder="För- och efternamn" />
         <div className='flex flex-col gap-[inherit] md:flex-row justify-between w-full'>
@@ -63,7 +63,7 @@ export function ContactForm() {
           }}
         />
 
-        <Button className="mt-8 block mx-auto bg-sgray text-white text-2xl">Skicka</Button>
+        <Button className="mt-2 lg:mt-8 block mx-auto bg-sgray text-white text-lg lg:text-2xl">Skicka</Button>
       </motion.div>
     </form>
   );
