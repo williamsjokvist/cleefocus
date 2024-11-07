@@ -227,7 +227,7 @@ function Features() {
               src={img}
               width={450}
               height={350}
-              className='object-cover object-center w-full h-[150px] md:w-full md:h-[300px] md:h-full rounded-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
+              className='object-cover object-center w-full h-[150px] md:w-full md:h-[300px] rounded-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
             />
           </motion.div>
         )
