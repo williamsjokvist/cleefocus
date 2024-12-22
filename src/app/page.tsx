@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Carousel } from "~/components/ui/carousel";
 import InstagramIcon from "~icons/mdi/instagram";
 import PhoneIcon from "~icons/mdi/phone";
+import ArrowRightIcon from "~icons/mdi/lightbulb-on";
+
 import EmailIcon from "~icons/mdi/email";
 
 import { ContactForm } from "~/components/contact";
@@ -40,7 +42,7 @@ function Intro() {
   const scrollTo = useScrollTo({ ease: 'easeInOut', duration: 1.25 });
 
   return (
-    <section className='w-screen min-h-screen pt-[180px] pb-[150px] flex items-center relative overflow-y-hidden before:content-[""] before:absolute before:bottom-0 before:w-full before:top-0 before:bg-black  before:from-black before:opacity-50'>
+    <section className='w-screen min-h-screen pt-[180px] pb-[150px] flex flex-col justify-center relative overflow-y-hidden before:content-[""] before:absolute before:bottom-0 before:w-full before:top-0 before:bg-black  before:from-black before:opacity-50'>
       <motion.video
         style={{ y }}
         className="absolute top-0 -z-50 object-cover max-h-none min-w-full h-auto min-h-full"
@@ -77,37 +79,52 @@ function Intro() {
               className='bg-gradient-orange group rounded-full hover:shadow-[0px_0px_5px] shadow-none hover:shadow-[#fa744a] transition-shadow'
               onClick={() => scrollTo(document.querySelector('#contact-form'), -200)}
             >
-              <span className='text-[#696969] group-hover:text-white group-hover:bg-opacity-0 duration-300 transition-colors px-8 py-2 bg-white rounded-full w-full h-full block bg-opacity-100'>Få en offert</span>
+              <span className='text-[#696969] group-hover:text-white group-hover:bg-opacity-0 duration-300 transition-colors px-8 py-2 bg-white rounded-full w-full h-full flex items-center gap-2 bg-opacity-100'>
+                Få en offert
+                <ArrowRightIcon />
+              </span>
             </Button>
-            <Link
-              href="https://www.instagram.com/cleefocus/"
-              target="_blank"
-              className="text-white flex items-center gap-3"
-            >
-              <InstagramIcon width={45} height={45} className='bg-gradient-insta rounded-xl p-[2px]' /> Följ oss på Instagram
-            </Link>
+          </div>
+          <div className="relative top-20 text-white text-left text-lg md:text-2xl">
+            <ul className='flex flex-wrap gap-5 justify-around xl:max-w-6xl'>
+              <li className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+                <span className='indent-4 inline-block'>Solcellsrengöring</span>
+              </li>
+              <li className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+                <span className='indent-4 inline-block'>Taktvätt</span>
+              </li>
+              <li className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+                <span className='indent-4 inline-block'>Takmålning</span>
+              </li>
+              <li className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+                <span className='indent-4 inline-block'>Fågelskydd</span>
+              </li>
+              <li className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+                <span className='indent-4 inline-block'>Marktvätt</span>
+              </li>
+            </ul>
           </div>
         </motion.div>
-
       </div>
-      <div className={`absolute bottom-4 left-4 sm:bottom-10 sm:left-10 text-white text-[clamp(18px,4vw,24px)] sm:gap-12 flex flex-wrap gap-6  `}>
+      <div className='w-full absolute bottom-4 sm:bottom-10 pr-4 sm:pr-10 text-white text-[clamp(18px,4vw,24px)] sm:gap-12 xl:gap-24 flex justify-end flex-wrap gap-6'>
         <div className='flex gap-4 items-center'>
           <PhoneIcon width={45} height={45}
-            style={{
-              filter: 'drop-shadow(0px 0px 1.5px #f90)'
-            }}
-            className='w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] text-orange-400'
+            className='w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] text-white'
           />
           <a href='tel:03691190' className='hover:underline'>036-911 90</a>
         </div>
         <div className='flex gap-4 items-center'>
           <EmailIcon width={45} height={45}
-            style={{
-              filter: 'drop-shadow(0px 0px 1.5px #f90)'
-            }}
-            className='w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] text-orange-400' />
+            className='w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] text-white' />
           <a href='mailto:info@cleefocus.com' className='hover:underline'>info@cleefocus.com</a>
         </div>
+        <Link
+          href="https://www.instagram.com/cleefocus/"
+          target="_blank"
+          className="text-white flex items-center gap-3"
+        >
+          <InstagramIcon width={45} height={45} className='bg-gradient-insta rounded-xl p-[2px]' /> Följ oss på Instagram
+        </Link>
       </div>
     </section>
   );
@@ -184,7 +201,7 @@ const features = [
   {
     title: "Solcellsrengöring ",
     description:
-      "Rester av damm, sot och pollen kan minska solenergianläggningars och solvärme modulers uteffekt med upp till 20 %. Pris: 1,800 kr upp till 40 paneler.",
+      "Rester av damm, sot och pollen kan minska solenergianläggningars och solvärme modulers uteffekt med upp till 20 %. Pris: 1,800 kr upp till 40 paneler",
     img: 'https://cleefocus.com/wp-content/uploads/2023/08/IMG_7546-768x960.jpg'
   },
   {
@@ -196,9 +213,14 @@ const features = [
   {
     title: "Takmålning",
     description:
-      `Efter att du har fått ett rent tak kan vi även måla om ditt tak,
-      vi är redo för alla typer av utmaningar`,
+      `Efter att du har fått ett rent tak kan vi även måla om ditt tak`,
     img: 'https://cleefocus.com/wp-content/uploads/2023/09/IMG-20230929-WA0014-768x576.jpg',
+  },
+  {
+    title: "Fågelpiggar",
+    description:
+      "Vi skyddar ditt tak mot fåglar",
+    img: '/fagelpiggar.jpg'
   },
   {
     title: "Marktvätt",
@@ -210,7 +232,7 @@ const features = [
 ];
 function Features() {
   return (
-    <div className='justify-items-center grid grid-rows-2 grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 px-4 pt-4 md:p-8 lg:px-12 lg:pt-12 gap-4 md:gap-8 xl:gap-12'>
+    <div className='justify-items-center grid grid-rows-2 grid-cols-2 xl:grid-rows-1 xl:grid-cols-5 px-4 pt-4 md:p-8 lg:px-12 lg:pt-12 gap-4 md:gap-8 xl:gap-12'>
       {features.map(({ title, description, img }, i) => {
         return (
           <motion.div
@@ -219,16 +241,24 @@ function Features() {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.125 + (i / 3) }}
             viewport={{ once: true, amount: 0.25 }}
-            className="max-w-[400px] w-full grid gap-4 lg:gap-12 place-content-between"
+            className="max-w-[350px] w-full  bg-slate-100 rounded-2xl"
           >
-            <h3 className='md:text-center text-xl sm:text-4xl md:text-[clamp(38px,3vw,58px)] font-medium'>{title}</h3>
-            <p className='text-md md:text-xl break-words'>{description}</p>
-            <img
-              src={img}
-              width={450}
-              height={350}
-              className='object-cover object-center w-full h-[150px] md:w-full md:h-[300px] rounded-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
-            />
+            <div className='relative'>
+              <img
+                src={img}
+                width={450}
+                height={350}
+                className='object-cover object-center w-full h-[150px] md:w-full md:h-[300px] rounded-t-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
+              />
+              <h3
+                style={{
+                  textShadow: '0px 0px 12px #000'
+                }}
+                className='absolute bottom-0 text-white pl-2 pb-2 text-2xl sm:text-4xl md:text-[clamp(32px,1vw,48px)] font-medium'>
+                {title}
+              </h3>
+            </div>
+            <p className='text-lg md:text-xl break-words p-2'>{description}</p>
           </motion.div>
         )
       })}

@@ -27,7 +27,7 @@ export function Carousel(props: { images: string[] }) {
   }, [xTranslation, duration, width]);
 
   return (
-    <div className="relative h-[420px] bg-sgray overflow-x-hidden">
+    <div className="relative h-[420px] bg-sgray overflow-hidden">
       <motion.div
         className="absolute left-0 flex gap-4 w-max py-3"
         style={{ x: xTranslation }}

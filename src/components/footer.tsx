@@ -28,10 +28,13 @@ export function Footer() {
             <span className='indent-4 inline-block'>Taktvätt</span>
           </dd>
           <dd className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
-            <span className='indent-4 inline-block'>Marktvätt</span>
+            <span className='indent-4 inline-block'>Takmålning</span>
           </dd>
           <dd className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
-            <span className='indent-4 inline-block'>Takmålning</span>
+            <span className='indent-4 inline-block'>Fågelskydd</span>
+          </dd>
+          <dd className='indent-2 before:bg-gradient-orange before:inline-block before:content-[""] before:w-3 before:h-3 before:rounded-full'>
+            <span className='indent-4 inline-block'>Marktvätt</span>
           </dd>
         </dl>
 

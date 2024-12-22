@@ -26,11 +26,15 @@ export default function RootLayout({
       </head>
       <body className={cabin.className}>
         <NavBar />
-        <Lenis root>
-          {children}
-        </Lenis>
+        {children}
         <Footer />
       </body>
     </html>
   );
 }
+
+/*
+<Lenis root>
+
+</Lenis>
+*/
