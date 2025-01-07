@@ -52,7 +52,7 @@ export function Footer() {
           alt="Cleefocus logo"
           className="max-w-[200px] h-[50px]"
         />
-        <small className='text-lg'>Copyright 2024 © CleeFocus AB</small>
+        <small className='text-lg'>Copyright {new Date().getFullYear()} © CleeFocus AB</small>
       </div>
     </footer>
   );
