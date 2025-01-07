@@ -232,36 +232,39 @@ const features = [
 ];
 function Features() {
   return (
-    <div className='justify-items-center grid grid-rows-2 grid-cols-2 xl:grid-rows-1 xl:grid-cols-5 px-4 pt-4 md:p-8 lg:px-12 lg:pt-12 gap-4 md:gap-8 xl:gap-12'>
-      {features.map(({ title, description, img }, i) => {
-        return (
-          <motion.div
-            key={title}
-            initial={{ y: 25, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.125 + (i / 3) }}
-            viewport={{ once: true, amount: 0.25 }}
-            className="max-w-[350px] w-full  bg-slate-100 rounded-2xl"
-          >
-            <div className='relative'>
-              <img
-                src={img}
-                width={450}
-                height={350}
-                className='object-cover object-center w-full h-[150px] md:w-full md:h-[300px] rounded-t-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
-              />
-              <h3
-                style={{
-                  textShadow: '0px 0px 12px #000'
-                }}
-                className='absolute bottom-0 text-white pl-2 pb-2 text-2xl sm:text-4xl md:text-[clamp(32px,1vw,48px)] font-medium'>
-                {title}
-              </h3>
-            </div>
-            <p className='text-lg md:text-xl break-words p-2'>{description}</p>
-          </motion.div>
-        )
-      })}
-    </div>
+    <section>
+      <h2 className='text-black w-full px-6 py-6 md:py-12 sm:text-center text-xl sm:text-4xl md:text-[clamp(38px,3vw,58px)] focus:outline-black'>Våra tjänster</h2>
+      <div className='justify-items-center grid grid-rows-2 grid-cols-2 xl:grid-rows-1 xl:grid-cols-5 px-4 pt-4 md:p-8 lg:px-12 lg:pt-12 gap-4 md:gap-8 xl:gap-12'>
+        {features.map(({ title, description, img }, i) => {
+          return (
+            <motion.div
+              key={title}
+              initial={{ y: 25, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ ease: 'easeInOut', duration: 1.25, delay: 0.125 + (i / 3) }}
+              viewport={{ once: true, amount: 0.25 }}
+              className="max-w-[350px] w-full  bg-slate-100 rounded-2xl"
+            >
+              <div className='relative'>
+                <img
+                  src={img}
+                  width={450}
+                  height={350}
+                  className='object-cover object-center w-full h-[150px] md:w-full md:h-[300px] rounded-t-2xl bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white'
+                />
+                <h3
+                  style={{
+                    textShadow: '0px 0px 12px #000'
+                  }}
+                  className='absolute bottom-0 text-white pl-2 pb-2 text-2xl sm:text-4xl md:text-[clamp(32px,1vw,48px)] font-medium'>
+                  {title}
+                </h3>
+              </div>
+              <p className='text-lg md:text-xl break-words p-2'>{description}</p>
+            </motion.div>
+          )
+        })}
+      </div>
+    </section>
   );
 }

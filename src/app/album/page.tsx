@@ -23,7 +23,8 @@ const Gallery = dynamic(() => import('../../components/gallery').then(mod => mod
 
 export default function Album() {
   return (
-    <main className="pt-[106px] bg-sgray min-h-screen">
+    <main className="pt-[250px] bg-sgray min-h-screen">
+      <h1 className="font-bold text-6xl text-white border-b-4 border-b-orange-400 mb-12 max-w-6xl mx-auto px-6">Galleri</h1>
       <Gallery images={images} />
     </main>
   );

@@ -42,6 +42,8 @@ export function Footer() {
           <dt className="text-3xl font-extrabold">Kontakt</dt>
           <dd>info@cleefocus.com</dd>
           <dd>036-911 90</dd>
+          <dd>Vardagar: 07:00–16:00</dd>
+          <dd>Helger: 10:00–14:00</dd>
         </dl>
       </div>
       <div className='relative flex flex-wrap gap-4 justify-between items-center py-12 px-16 before:bg-gradient-orange before:content-[""] before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full'>
