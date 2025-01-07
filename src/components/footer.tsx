@@ -50,7 +50,7 @@ export function Footer() {
         <img
           src="/logo.png"
           alt="Cleefocus logo"
-          className="max-w-[200px] h-[42px]"
+          className="max-w-[200px] h-[50px]"
         />
         <small className='text-lg'>Copyright 2024 © CleeFocus AB</small>
       </div>

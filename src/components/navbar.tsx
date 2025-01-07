@@ -86,7 +86,7 @@ export function NavBar() {
           <img
             src="/logo.png"
             alt="Cleefocus logo"
-            className="z-10 max-w-[200px] h-[42px]"
+            className="z-10 max-w-[200px] h-[50px]"
             style={{
               filter: scrolled || open ? 'grayscale(1) brightness(0)' : 'grayscale(1) brightness(8)'
             }}

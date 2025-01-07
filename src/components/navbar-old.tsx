@@ -7,7 +7,7 @@ export function NavBar() {
       <img
         src="/logo.png"
         alt="Cleefocus logo"
-        className="max-w-[200px] h-[42px]"
+        className="max-w-[200px] h-[50px]"
       />
       <nav className="flex gap-12 items-center font-medium">
         <Link href="/">Hem</Link>
